@@ -33,7 +33,7 @@
 %>
 <table align="center" border="1" width="70%">
     <tr>
-        <td colspan="2" align="center">Информация о телефоне владельца:<%</td>
+        <td colspan="2" align="center">Информация о телефоне владельца:<%person.getId();%></td>
 
     </tr>
 </table>

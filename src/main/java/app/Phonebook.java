@@ -78,15 +78,19 @@ public class Phonebook {
 	{
 		Integer id_filtered = Integer.parseInt(person.getId());
 		String query = "";
+		String secondquery = "";
 
 		// У человека может не быть отчества.
 		if (!person.getSurname().equals(""))
 		{
-			query = "UPDATE `person` SET `name` = '" + person.getName() + "', `surname` = '" + person.getSurname() + "', `middlename` = '" + person.getMiddlename() + "', `number` = '" + person.getPhones().get("1") + "' WHERE `id` = " + id_filtered;
+			query = "UPDATE `person` SET `name` = '" + person.getName() + "', `surname` = '" + person.getSurname() + "', `middlename` = '" + person.getMiddlename() + "' WHERE `id` = " + id_filtered;
+			secondquery = "UPDATE `phone` SET `number` = '" + person.getPhones().get("1") + "' WHERE `id` = " + id_filtered;
+
 		}
 		else
 		{
-			query = "UPDATE `person` SET `name` = '" + person.getName() + "', `surname` = '" + person.getSurname() + "', `number` = '" + person.getPhones().get("1") + "' WHERE `id` = " + id_filtered;
+			query = "UPDATE `person` SET `name` = '" + person.getName() + "', `surname` = '" + person.getSurname() + "' WHERE `id` = " + id_filtered;
+			secondquery = "UPDATE `phone` SET `number` = '" + person.getPhones().get("1") + "' WHERE `id` = " + id_filtered;
 		}
 
 		Integer affected_rows = this.db.changeDBData(query);
